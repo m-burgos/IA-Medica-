@@ -23,11 +23,12 @@ pix = args.pixel
 #################################################################
 #
 # Output directory has the structure:
-# M_dataset_<pix>
+# M_dataset<pix>
 #   |_patch
 #   |_mask
 #   |   |_red       
 #   |   |_green
+#   |_temp 	    ---> saves masked patches for WSI reconstruction
 #   |_coord.parquet ---> (file, x, y) referent to the bounding box
 #   |_data.pkl      ---> {file: {point:, size:}} vertex and size bounding box
 #
@@ -39,7 +40,7 @@ out_path = 'M_dataset'+str(pix)
 path_mask_r = os.path.join(out_path, 'mask', 'red')
 path_mask_v = os.path.join(out_path, 'mask', 'green')
 path_patch = os.path.join(out_path, 'patch')
-alfa = 0.35 # <___ esto también podría ser ingresado via argparse
+alfa = 0.35 # <--- esto también podría ser ingresado via argparse
 
 path_coords_df = os.path.join(out_path, 'coords.parquet')
 path_data_dict = os.path.join(out_path, 'data.pkl')
